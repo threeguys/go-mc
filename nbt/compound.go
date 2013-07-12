@@ -33,7 +33,6 @@ func (tag *CompoundTag) read(rdr *NBTReader) error {
 		}
 		
 		if c == TAG_End {
-			fmt.Printf("Read TAG_End!\n")
 			return nil
 		}
 		

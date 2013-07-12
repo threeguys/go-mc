@@ -29,6 +29,10 @@ type NBTError struct {
 	msg string
 }
 
+func NewError(msg string) NBTError {
+	return NBTError{ msg }
+}
+
 type NBTTag interface {
 	GetType() int
 	Print(indent string)
@@ -130,50 +134,38 @@ func (rdr *NBTReader) readTagData(c byte, name string) (NBTTag, error) {
 
 	switch c {
 		case TAG_End :
-			fmt.Printf("TAG_End read\n");
 			
 		case TAG_Byte :
-			fmt.Printf("TAG_Byte[%s]\n", name);
 			tag = NewByteTag(name)
 			
 		case TAG_Short :
-			fmt.Printf("TAG_Short[%s]\n", name);
 			tag = NewShortTag(name)
 			
 		case TAG_Int :
-			fmt.Printf("TAG_Int[%s]\n", name);
 			tag = NewIntTag(name)
 			
 		case TAG_Long :
-			fmt.Printf("TAG_Long[%s]\n", name);
 			tag = NewLongTag(name)
 			
 		case TAG_Float :
-			fmt.Printf("TAG_Float[%s]\n", name);
 			tag = NewFloatTag(name)
 			
 		case TAG_Double :
-			fmt.Printf("TAG_Double[%s]\n", name);
 			tag = NewDoubleTag(name)
 			
 		case TAG_Byte_Array :
-			fmt.Printf("TAG_Byte_Array read\n");
 			tag = NewByteArrayTag(name)
 			
 		case TAG_String :
-			fmt.Printf("TAG_String[%s]\n", name);
 			tag = NewStringTag(name)
 			
 		case TAG_List :
-			fmt.Printf("TAG_List[%s]\n", name);
 			tag = NewListTag(name)
 			
 		case TAG_Compound :
-			fmt.Printf("TAG_Compound[%s]\n", name);
 			tag = NewCompoundTag(name)
 			
 		case TAG_Int_Array :
-			fmt.Printf("TAG_Int_Array read\n");
 			tag = NewIntArrayTag(name)
 	}
 
